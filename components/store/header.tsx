@@ -107,7 +107,7 @@ export default function StoreHeader() {
               href="/"
               className="flex shrink-0 items-center"
             >
-              <DynamicBrandLogo variant="full" className="w-36 sm:w-48 lg:w-64" />
+              <DynamicBrandLogo variant="full" className="w-44 sm:w-56 lg:w-80" />
             </Link>
 
             {/* Desktop Search */}
