@@ -13,25 +13,8 @@ export default function StoreFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand & Social */}
           <div className="space-y-6">
-            <div className="w-44 lg:w-64 py-4">
-              <svg viewBox="0 0 400 400" className="w-full h-auto drop-shadow-xl" xmlns="http://www.w3.org/2000/svg">
-                {/* Navy rounded background to match footer */}
-                <rect width="400" height="400" rx="40" fill="#002D5B" />
-                {/* White bag-like shape */}
-                <path d="M100 100 Q100 70 130 70 H270 Q300 70 300 100 V300 Q300 330 270 330 H130 Q100 330 100 300 Z" fill="white" />
-                {/* Top orange triangle */}
-                <path d="M150 70 L200 160 L250 70 Z" fill="#F47920" />
-                {/* Central C icon */}
-                <g transform="translate(140, 180)">
-                  <path d="M100 0 A50 50 0 1 0 100 100" fill="none" stroke="#002D5B" strokeWidth="45" />
-                  {/* Trowel */}
-                  <path d="M45 40 L75 25 L100 45 L70 60 Z" fill="#002D5B" />
-                </g>
-                {/* Bottom orange sack */}
-                <rect x="175" y="280" width="50" height="65" rx="8" fill="#F47920" transform="scale(0.85) translate(40, 50)" />
-                {/* Brand text */}
-                <text x="200" y="380" fill="white" textAnchor="middle" style={{ font: '900 28px sans-serif', letterSpacing: '0.05em' }}>C&C DISTRIBUIDORA</text>
-              </svg>
+            <div className="w-32 lg:w-40 py-4">
+              <DynamicBrandLogo variant="square" />
             </div>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
               Sua parceira de confiança em materiais de construção. Preço de atacado, entrega ágil e atendimento especializado para sua obra.

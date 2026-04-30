@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
 export default function WhatsAppChat() {
   const [isOpen, setIsOpen] = useState(false)
   
-  const salespersonImg = "/atendente-vendas.jpg"
+  const salespersonImg = "/atendente-vendas.png"
 
   const departments = [
     { label: "Quero fazer um orcamento", msg: "Olá! Gostaria de fazer um orçamento." },
@@ -104,10 +104,23 @@ export default function WhatsAppChat() {
       {/* Floating Trigger (Standard Rounded) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 rounded-full bg-[#F47920] text-white shadow-[0_10px_30px_rgba(244,121,32,0.3)] flex items-center justify-center transition-all hover:scale-110 active:scale-90"
+        className="w-16 h-16 rounded-full bg-[#F47920] text-white shadow-[0_10px_30px_rgba(244,121,32,0.3)] flex items-center justify-center transition-all hover:scale-110 active:scale-90 overflow-hidden border-2 border-white"
       >
-        {isOpen ? <X className="w-8 h-8" /> : <MessageCircle className="w-8 h-8 fill-current" />}
+        {isOpen ? (
+          <X className="w-8 h-8" />
+        ) : (
+          <div className="relative w-full h-full">
+            <Image 
+              src={salespersonImg} 
+              alt="Chat" 
+              fill 
+              className="object-cover"
+            />
+            <div className="absolute bottom-1 right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full shadow-sm" />
+          </div>
+        )}
       </button>
     </div>
   )
+
 }

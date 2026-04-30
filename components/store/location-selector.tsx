@@ -66,7 +66,13 @@ export default function LocationSelector() {
           <span className="absolute inset-0 rounded-xl border border-[#F47920]/20 animate-ping opacity-20" />
         </div>
         <div className="flex flex-col items-start leading-tight">
-          <span className="text-[9px] font-bold uppercase tracking-widest text-[#002D5B]/40">Região de entrega</span>
+          <div className="flex items-center gap-1.5">
+            <span className="text-[9px] font-bold uppercase tracking-widest text-[#002D5B]/40 whitespace-nowrap">Região de entrega</span>
+            <div className="flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+              <span className="flex h-1 w-1 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-[8px] font-black uppercase text-emerald-600 tracking-tighter">Pronta Entrega</span>
+            </div>
+          </div>
           <div className="flex items-center gap-1">
             <span className="text-xs font-bold text-[#002D5B] truncate max-w-[120px]">{location}</span>
             <ChevronDown className={cn("w-3.5 h-3.5 text-[#002D5B]/20 transition-transform", isOpen && "rotate-180")} />
@@ -82,7 +88,17 @@ export default function LocationSelector() {
           />
           <div className="absolute top-full right-0 lg:left-0 lg:right-auto mt-3 w-72 p-5 bg-white rounded-[2rem] shadow-2xl border border-border/40 z-[70] animate-in fade-in zoom-in-95 duration-200">
             <h3 className="text-sm font-bold text-[#002D5B] mb-1">Onde você está?</h3>
-            <p className="text-[11px] text-muted-foreground mb-6">Mostraremos as ofertas e prazos para sua região.</p>
+            <p className="text-[11px] text-muted-foreground mb-4">Mostraremos as ofertas e prazos para sua região.</p>
+            
+            <div className="flex items-center gap-2 p-3 mb-6 bg-emerald-50 rounded-2xl border border-emerald-100">
+              <div className="flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500 text-white shadow-sm">
+                <Navigation className="w-4 h-4" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-wide leading-none">Frete Disponível</span>
+                <span className="text-[9px] text-emerald-600/80 font-medium">Sua região possui pronta entrega!</span>
+              </div>
+            </div>
             
             <div className="space-y-3">
               <button

@@ -107,28 +107,8 @@ export default function StoreHeader() {
               href="/"
               className="flex shrink-0 items-center overflow-visible"
             >
-              <div className="w-44 sm:w-64 lg:w-96">
-                <svg viewBox="0 0 500 160" className="w-full h-auto drop-shadow-lg" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="500" height="110" fill="#002D5B" rx="8" />
-                  <rect y="110" width="500" height="50" fill="#F47920" rx="8" />
-                  <g transform="translate(20, 15) scale(1.1)">
-                    <path d="M40 10C25 10 15 20 15 35C15 50 25 60 40 60H65L80 35L65 10H40Z" fill="white" />
-                    <circle cx="42" cy="35" r="12" fill="#002D5B" />
-                    <path d="M20 70L40 60L60 70" stroke="white" strokeWidth="5" fill="none" strokeLinecap="round" />
-                    <circle cx="20" cy="70" r="5" fill="white" />
-                    <g transform="translate(55, 45)">
-                      <path d="M0 0L18 -18L40 5L22 23Z" fill="white" />
-                      <path d="M15 -5C12 -5 10 -3 10 0V15H20V0C20 -3 18 -5 15 -5Z" fill="#002D5B" transform="translate(8, 2) scale(0.7)" />
-                    </g>
-                  </g>
-                  <g transform="translate(135, 5)">
-                    <text y="65" fill="white" style={{ font: '900 68px sans-serif', letterSpacing: '-0.03em' }}>CIMENTO</text>
-                    <text x="320" y="68" fill="#F47920" style={{ font: '900 82px sans-serif' }}>&</text>
-                    <text x="385" y="65" fill="white" style={{ font: '900 68px sans-serif', letterSpacing: '-0.03em' }}>CAL</text>
-                    <text x="200" y="98" fill="white" textAnchor="middle" style={{ font: '700 34px sans-serif', letterSpacing: '0.42em' }}>DISTRIBUIDORA</text>
-                  </g>
-                  <text x="250" y="144" fill="white" textAnchor="middle" style={{ font: '900 30px sans-serif', letterSpacing: '0.12em' }}>ATACADO DE CONSTRUÇÃO</text>
-                </svg>
+              <div className="w-32 sm:w-44 lg:w-56">
+                <DynamicBrandLogo variant="full" />
               </div>
             </Link>
 
@@ -215,6 +195,15 @@ export default function StoreHeader() {
                   Rastrear Pedido
                 </Link>
               </li>
+              <div className="w-px h-4 bg-border/40 mx-2" />
+              <li>
+                <Link
+                  href="/calculadora"
+                  className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#002D5B] uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all"
+                >
+                  Calculadora de Materiais
+                </Link>
+              </li>
               <li className="ml-auto">
                 {isMounted && (
                   <ContactPopup>
@@ -239,6 +228,13 @@ export default function StoreHeader() {
               className="block rounded-2xl px-4 py-3.5 text-sm font-semibold transition hover:bg-muted/80 active:scale-[0.99]"
             >
               Ver catálogo completo
+            </Link>
+            <Link
+              href="/calculadora"
+              onClick={() => setMenuOpen(false)}
+              className="block rounded-2xl px-4 py-3.5 text-sm font-semibold text-[#F47920] transition hover:bg-muted/80 active:scale-[0.99]"
+            >
+              Calculadora de Materiais
             </Link>
             {categories.map((cat) => (
               <Link
