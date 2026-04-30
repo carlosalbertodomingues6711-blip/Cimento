@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { Phone, Truck, MapPin, Mail } from "lucide-react"
 import { SITE } from "@/lib/site-config"
+import LocationSelector from "@/components/store/location-selector"
 
 export default function Topbar() {
   return (

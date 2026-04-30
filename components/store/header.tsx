@@ -37,7 +37,7 @@ export default function StoreHeader() {
         if (data.user) {
           const meta = data.user.user_metadata as any
           const extractedName = meta?.full_name ?? meta?.name ?? meta?.first_name ?? meta?.displayName
-          
+
           setUser({
             email: data.user.email || "",
             name: extractedName,
@@ -76,8 +76,8 @@ export default function StoreHeader() {
     }
   }, [])
 
-  const barSurface = scrolled 
-    ? "bg-white/40 backdrop-blur-2xl border-b border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.05)]" 
+  const barSurface = scrolled
+    ? "bg-white/40 backdrop-blur-2xl border-b border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.05)]"
     : "bg-transparent border-b border-transparent"
 
   return (
@@ -112,8 +112,15 @@ export default function StoreHeader() {
               </div>
             </Link>
 
-            {/* Desktop Search */}
-            <div className="hidden lg:flex flex-1 max-w-2xl mx-8">
+            {/* Desktop Search & Location Context */}
+            <div className="hidden lg:flex flex-col flex-1 max-w-2xl mx-8 gap-2">
+              <div className="flex items-center gap-4 pl-1">
+                <LocationSelector />
+                <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                  <span className="flex h-1 w-1 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-[9px] font-black uppercase text-emerald-600 tracking-tighter">Logística Expressa Ativa</span>
+                </div>
+              </div>
               <Suspense fallback={<div className="h-12 w-full animate-pulse rounded-lg bg-slate-50" />}>
                 <StoreSearch />
               </Suspense>
@@ -137,11 +144,6 @@ export default function StoreHeader() {
                 </div>
               </Link>
 
-              {/* Desktop Location Selector */}
-              <div className="hidden lg:block border-l border-slate-200 pl-6">
-                <LocationSelector />
-              </div>
-
               {/* Cart */}
               <Link
                 href="/carrinho"
@@ -158,7 +160,14 @@ export default function StoreHeader() {
           </div>
 
           {/* Search Row (Mobile/Tablet Only) */}
-          <div className="pb-3 lg:hidden">
+          <div className="pb-3 lg:hidden space-y-3">
+            <div className="flex items-center justify-between px-1">
+              <LocationSelector />
+              <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
+                <span className="flex h-1 w-1 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-[8px] font-black uppercase text-emerald-600 tracking-tighter">Pronta Entrega</span>
+              </div>
+            </div>
             <Suspense fallback={<div className="h-12 w-full animate-pulse rounded-lg bg-slate-50" />}>
               <StoreSearch />
             </Suspense>
@@ -170,7 +179,7 @@ export default function StoreHeader() {
               <li>
                 <Link
                   href="/produtos"
-                  className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#002D5B] uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all"
+                  className="flex items-center gap-2 px-6 py-3 text-[12px] font-semibold text-[#002D5B] uppercase tracking-wider hover:bg-muted/50 rounded-xl transition-all"
                 >
                   <Menu className="h-4 w-4" />
                   Todos os Produtos
@@ -180,7 +189,7 @@ export default function StoreHeader() {
               <li>
                 <Link
                   href="/promocoes"
-                  className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#F47920] uppercase tracking-wide hover:bg-[#F47920]/10 rounded-xl transition-all"
+                  className="flex items-center gap-2 px-6 py-3 text-[12px] font-semibold text-[#F47920] uppercase tracking-wider hover:bg-[#F47920]/10 rounded-xl transition-all"
                 >
                   <Tag className="h-4 w-4" />
                   Ofertas do Dia
@@ -190,7 +199,7 @@ export default function StoreHeader() {
               <li>
                 <Link
                   href="/rastrear-pedido"
-                  className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#002D5B]/70 uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all"
+                  className="flex items-center gap-2 px-6 py-3 text-[12px] font-semibold text-[#002D5B]/70 uppercase tracking-wider hover:bg-muted/50 rounded-xl transition-all"
                 >
                   Rastrear Pedido
                 </Link>
@@ -199,7 +208,7 @@ export default function StoreHeader() {
               <li>
                 <Link
                   href="/calculadora-de-materiais"
-                  className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#002D5B] uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all"
+                  className="flex items-center gap-2 px-6 py-3 text-[12px] font-semibold text-[#002D5B] uppercase tracking-wider hover:bg-muted/50 rounded-xl transition-all"
                 >
                   Calculadora de Materiais
                 </Link>
@@ -207,7 +216,7 @@ export default function StoreHeader() {
               <li className="ml-auto">
                 {isMounted && (
                   <ContactPopup>
-                    <button className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#002D5B] uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all cursor-pointer">
+                    <button className="flex items-center gap-2 px-6 py-3 text-[12px] font-semibold text-[#002D5B] uppercase tracking-wider hover:bg-muted/50 rounded-xl transition-all cursor-pointer">
                       <Headset className="h-4 w-4 text-[#F47920]" />
                       Atendimento Oficial
                     </button>
