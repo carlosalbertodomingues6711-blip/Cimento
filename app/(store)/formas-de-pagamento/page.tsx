@@ -1,48 +1,68 @@
-import type { Metadata } from "next"
 import InstitutionalLayout from "@/components/store/institutional-layout"
-import WhatsAppCta from "@/components/store/whatsapp-cta"
+import { SITE } from "@/lib/site-config"
+import { CreditCard, Barcode, Smartphone, Building2 } from "lucide-react"
 
-export const metadata: Metadata = {
-  title: "Formas de pagamento",
+export const metadata = {
+  title: `Formas de Pagamento | ${SITE.shortName}`,
+  description: `Confira as condições de pagamento e parcelamento da ${SITE.shortName}.`,
 }
 
-export default function FormasPagamentoPage() {
+export default function PagamentoPage() {
   return (
-    <InstitutionalLayout
-      title="Formas de pagamento"
-      subtitle="Condições comerciais alinhadas ao perfil B2B e B2C."
+    <InstitutionalLayout 
+      title="Formas de Pagamento" 
+      subtitle="Facilidade e segurança para você fechar seu pedido com tranquilidade."
     >
-      <section className="rounded-2xl border border-primary/15 bg-primary/[0.04] p-6 md:p-8 mb-8 not-prose">
-        <h2 className="font-heading text-lg font-bold text-foreground mb-3">Política de pagamento</h2>
-        <p className="text-foreground/90 leading-relaxed text-[15px]">
-          O Atacado de Construção prioriza segurança e transparência em todas as transações. Nosso modelo comercial
-          foi estruturado para garantir controle, rastreabilidade e segurança em cada negociação, oferecendo
-          confiança total ao cliente. O setor financeiro confirma condições, prazos e formas de pagamento de forma
-          clara, alinhada ao perfil da sua empresa e ao porte do pedido.
-        </p>
-      </section>
+      <div className="space-y-10">
+        <div className="grid gap-6 md:grid-cols-2">
+          <section className="p-6 rounded-3xl border border-slate-200 bg-slate-50 space-y-4">
+            <div className="flex items-center gap-3 text-[#002D5B]">
+              <Smartphone className="h-6 w-6 text-[#F47920]" />
+              <h2 className="text-xl font-bold">PIX</h2>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              A forma mais rápida de processar seu pedido. A confirmação é imediata e permite agilizar o carregamento do material.
+            </p>
+          </section>
 
-      <p>
-        As formas de pagamento disponíveis são definidas em conjunto com você, conforme análise comercial e a
-        melhor combinação para a sua obra ou revenda. A confirmação é sempre formalizada pelo setor financeiro após
-        o orçamento.
-      </p>
-      <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-        <li>PIX e transferência bancária</li>
-        <li>Cartão, quando disponível para a operação</li>
-        <li>Condições especiais para CNPJ e prazos negociados</li>
-      </ul>
-      <p>
-        Para valores, limites e parcelamento, solicite uma proposta pelo WhatsApp ou pelo e-mail oficial com a lista
-        de materiais e os dados da empresa.
-      </p>
-      <div className="not-prose pt-4">
-        <WhatsAppCta
-          source="contact_page"
-          page="/formas-de-pagamento"
-          text="Olá! Gostaria de saber as formas de pagamento para meu pedido."
-          label="Falar com o financeiro"
-        />
+          <section className="p-6 rounded-3xl border border-slate-200 bg-slate-50 space-y-4">
+            <div className="flex items-center gap-3 text-[#002D5B]">
+              <CreditCard className="h-6 w-6 text-[#F47920]" />
+              <h2 className="text-xl font-bold">Cartões de Crédito</h2>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Aceitamos as principais bandeiras (Visa, Mastercard, Elo, Amex). Parcelamos em até 10x (consulte taxas de parcelamento).
+            </p>
+          </section>
+
+          <section className="p-6 rounded-3xl border border-slate-200 bg-slate-50 space-y-4">
+            <div className="flex items-center gap-3 text-[#002D5B]">
+              <Barcode className="h-6 w-6 text-[#F47920]" />
+              <h2 className="text-xl font-bold">Boleto Bancário</h2>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Disponível para pagamentos à vista. A liberação do pedido ocorre após a compensação bancária (até 2 dias úteis).
+            </p>
+          </section>
+
+          <section className="p-6 rounded-3xl border border-slate-200 bg-slate-50 space-y-4">
+            <div className="flex items-center gap-3 text-[#002D5B]">
+              <Building2 className="h-6 w-6 text-[#F47920]" />
+              <h2 className="text-xl font-bold">Boleto Faturado (PJ)</h2>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Condição exclusiva para empresas e construtoras mediante análise prévia de crédito. Consulte nosso setor financeiro.
+            </p>
+          </section>
+        </div>
+
+        <section className="rounded-2xl border border-slate-100 bg-slate-50/50 p-6">
+          <h3 className="font-bold text-[#002D5B] mb-2">Segurança dos Dados</h3>
+          <p className="text-xs text-muted-foreground leading-relaxed">
+            Todas as transações realizadas em nosso site são protegidas por protocolos de segurança SSL, garantindo que suas 
+            informações financeiras sejam criptografadas e tratadas com total sigilo. Não armazenamos os dados do seu cartão em nossos servidores.
+          </p>
+        </section>
       </div>
     </InstitutionalLayout>
   )

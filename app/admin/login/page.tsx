@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Lock, Mail, Eye, EyeOff } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
 import { AUTH_SCOPE_ADMIN } from "@/lib/auth/scopes"
+import DynamicBrandLogo from "@/components/store/dynamic-brand-logo"
 
 function messageForLoginFailure(status: number, apiError: string): string {
   if (status === 403) {
@@ -60,8 +61,8 @@ export default function AdminLoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-secondary">
       <div className="w-full max-w-md mx-4">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary mb-4">
-            <Lock className="w-8 h-8 text-primary-foreground" />
+          <div className="inline-flex items-center justify-center mb-4">
+            <DynamicBrandLogo variant="square" className="w-24 h-24" />
           </div>
           <h1 className="text-2xl font-bold text-secondary-foreground">Painel Administrativo</h1>
           <p className="text-secondary-foreground/60 mt-1">Atacado de Construção</p>

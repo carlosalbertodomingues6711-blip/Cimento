@@ -22,6 +22,7 @@ import {
   User,
   Settings,
 } from "lucide-react"
+import DynamicBrandLogo from "@/components/store/dynamic-brand-logo"
 
 const menuItems = [
   { label: "Dashboard", href: "/admin", icon: LayoutDashboard },
@@ -63,21 +64,24 @@ export default function AdminAppShell({ children, adminEmail, adminName }: Props
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <div className="flex items-center justify-between p-5 border-b border-sidebar-border">
-          <div>
-            <h2 className="text-lg font-bold text-sidebar-foreground">Painel</h2>
-            <p className="text-xs text-sidebar-foreground/60 truncate max-w-[11rem]" title={adminEmail}>
-              {adminName ? `Olá, ${adminName.split(" ")[0]}` : adminEmail}
-            </p>
-          </div>
+        <div className="flex flex-col p-6 border-b border-sidebar-border gap-4 relative">
           <button
             type="button"
             onClick={() => setSidebarOpen(false)}
-            className="lg:hidden text-sidebar-foreground/60 hover:text-sidebar-foreground"
+            className="absolute right-4 top-4 lg:hidden text-sidebar-foreground/60 hover:text-sidebar-foreground"
             aria-label="Fechar menu"
           >
             <X className="w-5 h-5" />
           </button>
+          <div className="w-24">
+            <DynamicBrandLogo variant="square" />
+          </div>
+          <div>
+            <h2 className="text-lg font-bold text-sidebar-foreground">Painel Admin</h2>
+            <p className="text-xs text-sidebar-foreground/60 truncate max-w-[11rem]" title={adminEmail}>
+              {adminName ? `Olá, ${adminName.split(" ")[0]}` : adminEmail}
+            </p>
+          </div>
         </div>
 
         <nav className="p-3 flex flex-col gap-1 flex-1 overflow-y-auto">

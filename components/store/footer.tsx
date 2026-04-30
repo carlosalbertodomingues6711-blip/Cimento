@@ -29,18 +29,31 @@ export default function StoreFooter() {
           {/* Links: Institucional */}
           <div>
             <h4 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#F47920]">Institucional</h4>
-            <ul className="space-y-4 text-sm font-medium text-white/70">
-              <li><Link href="/sobre" className="hover:text-white transition-colors">Sobre a {SITE.shortName}</Link></li>
+            <ul className="grid grid-cols-1 gap-y-3 gap-x-8 text-sm font-medium text-white/70">
+              <li><Link href="/sobre-nos" className="hover:text-white transition-colors">Sobre Nós</Link></li>
               <li><Link href="/nossas-lojas" className="hover:text-white transition-colors">Nossas Lojas</Link></li>
               <li><Link href="/trabalhe-conosco" className="hover:text-white transition-colors">Trabalhe Conosco</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">Blog & Dicas</Link></li>
-              <li><Link href="/politica-de-privacidade" className="hover:text-white transition-colors">Privacidade</Link></li>
+              <li><Link href="/rastrear-pedido" className="hover:text-white transition-colors">Rastrear Pedido</Link></li>
+              <li><Link href="/contato" className="hover:text-white transition-colors">Fale Conosco</Link></li>
             </ul>
           </div>
 
-          {/* Links: Atendimento */}
+          {/* Links: Ajuda & Suporte */}
           <div>
-            <h4 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#F47920]">Atendimento</h4>
+            <h4 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#F47920]">Ajuda</h4>
+            <ul className="space-y-3 text-sm font-medium text-white/70">
+              <li><Link href="/politica-de-privacidade" className="hover:text-white transition-colors">Privacidade</Link></li>
+              <li><Link href="/trocas-e-devolucoes" className="hover:text-white transition-colors">Trocas e Devoluções</Link></li>
+              <li><Link href="/politica-de-frete" className="hover:text-white transition-colors">Política de Frete</Link></li>
+              <li><Link href="/formas-de-pagamento" className="hover:text-white transition-colors">Formas de Pagamento</Link></li>
+              <li><Link href="/termos-de-uso" className="hover:text-white transition-colors">Termos de Uso</Link></li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h4 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#F47920]">Contato</h4>
             <ul className="space-y-4 text-sm font-medium text-white/70">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-[#F47920] shrink-0" />
@@ -55,35 +68,14 @@ export default function StoreFooter() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#F47920] shrink-0" />
-                <p>São Paulo, SP - Brasil</p>
+                <p className="text-xs leading-relaxed">
+                  {SITE.address.street}<br/>
+                  {SITE.address.district}<br/>
+                  {SITE.address.city}<br/>
+                  {SITE.address.zip}
+                </p>
               </li>
             </ul>
-          </div>
-
-          {/* Help / Security */}
-          <div>
-            <h4 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#F47920]">Segurança</h4>
-            <div className="space-y-6">
-              <div className="flex flex-wrap gap-3">
-                <div className="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-xl border border-white/10">
-                   <ShieldCheck className="w-5 h-5 text-emerald-400" />
-                   <span className="text-[10px] font-bold uppercase">Site Seguro</span>
-                </div>
-                <div className="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-xl border border-white/10">
-                   <CreditCard className="w-5 h-5 text-[#F47920]" />
-                   <span className="text-[10px] font-bold uppercase">Pagamento SSL</span>
-                </div>
-              </div>
-              <div className="pt-4 border-t border-white/10">
-                 <p className="text-[10px] font-bold uppercase tracking-widest mb-3 opacity-40">Formas de Pagamento</p>
-                 <div className="flex flex-wrap gap-2 opacity-80">
-                    <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" className="h-6 w-auto grayscale hover:grayscale-0 transition-all" />
-                    <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" className="h-6 w-auto grayscale hover:grayscale-0 transition-all" />
-                    <img src="https://img.icons8.com/color/48/pix.png" alt="Pix" className="h-6 w-auto grayscale hover:grayscale-0 transition-all" />
-                    <img src="https://img.icons8.com/color/48/barcode.png" alt="Boleto" className="h-6 w-auto grayscale hover:grayscale-0 transition-all" />
-                 </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -91,15 +83,17 @@ export default function StoreFooter() {
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           <div className="space-y-1">
             <p className="text-[11px] font-medium text-white/40">
-              © {currentYear} {SITE.name}. Todos os direitos reservados.
+              © 2026 Atacado de Construção. Todos os direitos reservados.
             </p>
-            <p className="text-[10px] text-white/20">
-              CNPJ: 00.000.000/0001-00 | Rua Exemplo, 123 - São Paulo/SP
+            <p className="text-[10px] text-white/20 uppercase tracking-widest">
+              CNPJ e razão social conforme contrato social.
             </p>
           </div>
-          <div className="flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-white/40">
-            <Link href="/termos" className="hover:text-white transition-colors">Termos de Uso</Link>
-            <Link href="/politica-de-cookies" className="hover:text-white transition-colors">Cookies</Link>
+          <div className="flex items-center gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+             <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" className="h-5 w-auto" />
+             <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" className="h-5 w-auto" />
+             <img src="https://img.icons8.com/color/48/pix.png" alt="Pix" className="h-5 w-auto" />
+             <img src="https://img.icons8.com/color/48/barcode.png" alt="Boleto" className="h-5 w-auto" />
           </div>
         </div>
       </div>

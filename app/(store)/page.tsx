@@ -9,6 +9,7 @@ import CategoriesCarousel from "@/components/store/categories-carousel"
 import InstitutionalSection from "@/components/store/institutional-section"
 import TestimonialsCarousel from "@/components/store/testimonials-carousel"
 import ProductCard from "@/components/store/product-card"
+import ProductsCarousel from "@/components/store/products-carousel"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight, Truck, ShieldCheck, Award, Headphones, LayoutGrid, Sparkles, Tag } from "lucide-react"
@@ -20,17 +21,19 @@ import { trackWhatsAppClick } from "@/lib/track-whatsapp"
 const supabase = createClient()
 
 async function fetchHome() {
-  const [featuredRes, categoriesRes, newRes, discountRes] = await Promise.all([
-    supabase.from("products").select("*").eq("active", true).eq("featured", true).order("created_at", { ascending: false }).limit(8),
+  const [featuredRes, categoriesRes, newRes, discountRes, allRes] = await Promise.all([
+    supabase.from("products").select("*").eq("active", true).eq("featured", true).order("created_at", { ascending: false }).limit(24),
     supabase.from("categories").select("*, products(id)").eq("active", true).order("sort_order"),
-    supabase.from("products").select("*").eq("active", true).eq("is_new", true).order("created_at", { ascending: false }).limit(8),
-    supabase.from("products").select("*").eq("active", true).eq("is_discount", true).order("created_at", { ascending: false }).limit(8),
+    supabase.from("products").select("*").eq("active", true).eq("is_new", true).order("created_at", { ascending: false }).limit(24),
+    supabase.from("products").select("*").eq("active", true).eq("is_discount", true).order("created_at", { ascending: false }).limit(24),
+    supabase.from("products").select("*").eq("active", true).order("created_at", { ascending: false }).limit(24),
   ])
   return {
     featured: featuredRes.data || [],
     categories: categoriesRes.data || [],
     newProducts: newRes.data || [],
     discounts: discountRes.data || [],
+    allProducts: allRes.data || [],
   }
 }
 
@@ -168,11 +171,7 @@ export default function HomePage() {
               href="/produtos"
               icon={Sparkles}
             />
-            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
-              {data.featured.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
+            <ProductsCarousel products={data.featured} />
           </div>
         </section>
       )}
@@ -203,6 +202,25 @@ export default function HomePage() {
       <div className="bg-[#002D5B] py-20 my-10">
          <TestimonialsCarousel />
       </div>
+
+      {/* Complete Gallery / Mix */}
+      {data?.allProducts && data.allProducts.length > 0 && (
+        <section className="py-16 sm:py-24">
+          <div className="mx-auto max-w-7xl px-4">
+            <SectionHeader
+              title="Vitrine Completa"
+              subtitle="Tudo o que sua obra precisa em um só lugar"
+              href="/produtos"
+              icon={LayoutGrid}
+            />
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:grid-cols-3 lg:grid-cols-4">
+              {data.allProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Offer Banner / CTA */}
       <section className="mx-auto max-w-7xl px-4 py-16">

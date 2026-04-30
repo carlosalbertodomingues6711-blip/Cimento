@@ -31,7 +31,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description: SITE.tagline,
     icons: favUrl
       ? { icon: [{ url: favUrl }] }
-      : { icon: [{ url: BRANDING.faviconPath, type: 'image/png', sizes: '32x32' }] },
+      : { icon: [{ url: "/logo-footer.jpg", type: "image/jpeg" }] },
   }
 }
 
