@@ -129,7 +129,7 @@ export default function StoreHeader() {
                   <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">
                     {user ? "Bem-vindo," : "Acesse sua"}
                   </span>
-                  <span className="text-[12px] font-bold text-[#002D5B] truncate max-w-[120px]">
+                  <span className="text-[12px] font-semibold text-[#002D5B] truncate max-w-[120px]">
                     {user ? (user.name || user.email.split("@")[0]) : "Conta"}
                   </span>
                 </div>
@@ -147,7 +147,7 @@ export default function StoreHeader() {
               >
                 <ShoppingCart className="h-5 w-5" />
                 {cartCount > 0 && (
-                  <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#F47920] px-1 text-[10px] font-black text-white shadow-sm ring-2 ring-white">
+                  <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#F47920] px-1 text-[10px] font-bold text-white shadow-sm ring-2 ring-white">
                     {cartCount > 99 ? "99+" : cartCount}
                   </span>
                 )}
@@ -168,7 +168,7 @@ export default function StoreHeader() {
               <li>
                 <Link
                   href="/produtos"
-                  className="flex items-center gap-2 px-6 py-3 text-sm font-black text-[#002D5B] uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all"
+                  className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#002D5B] uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all"
                 >
                   <Menu className="h-4 w-4" />
                   Todos os Produtos
@@ -178,7 +178,7 @@ export default function StoreHeader() {
               <li>
                 <Link
                   href="/promocoes"
-                  className="flex items-center gap-2 px-6 py-3 text-sm font-black text-[#F47920] uppercase tracking-wide hover:bg-[#F47920]/10 rounded-xl transition-all"
+                  className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#F47920] uppercase tracking-wide hover:bg-[#F47920]/10 rounded-xl transition-all"
                 >
                   <Tag className="h-4 w-4" />
                   Ofertas do Dia
@@ -188,7 +188,7 @@ export default function StoreHeader() {
               <li>
                 <Link
                   href="/rastrear-pedido"
-                  className="flex items-center gap-2 px-6 py-3 text-sm font-black text-[#002D5B]/70 uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all"
+                  className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#002D5B]/70 uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all"
                 >
                   Rastrear Pedido
                 </Link>
@@ -196,7 +196,7 @@ export default function StoreHeader() {
               <li className="ml-auto">
                 {isMounted && (
                   <ContactPopup>
-                    <button className="flex items-center gap-2 px-6 py-3 text-sm font-black text-[#002D5B] uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all cursor-pointer">
+                    <button className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#002D5B] uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all cursor-pointer">
                       <Headset className="h-4 w-4 text-[#F47920]" />
                       Atendimento Oficial
                     </button>

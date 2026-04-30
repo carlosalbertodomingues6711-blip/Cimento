@@ -36,7 +36,7 @@ export default function DynamicBrandLogo({
       <div className="flex flex-col leading-none">
         <span
           className={cn(
-            "font-heading text-xl font-black tracking-tighter sm:text-2xl italic",
+            "font-heading text-xl font-bold tracking-tighter sm:text-2xl italic",
             inverted ? "text-white" : "text-[#002D5B]",
           )}
         >
@@ -44,7 +44,7 @@ export default function DynamicBrandLogo({
         </span>
         <span
           className={cn(
-            "text-[9px] font-black uppercase tracking-[0.3em] sm:text-[10px]",
+            "text-[9px] font-bold uppercase tracking-[0.3em] sm:text-[10px]",
             inverted ? "text-white/60" : "text-[#F47920]",
           )}
         >

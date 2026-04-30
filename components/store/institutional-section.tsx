@@ -55,7 +55,7 @@ export default function InstitutionalSection() {
             </div>
             
             <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-black text-[#002D5B] tracking-tight leading-[1.1] italic">
+                <h2 className="text-4xl md:text-5xl font-bold text-[#002D5B] tracking-tight leading-[1.1] italic">
                     {title}
                 </h2>
                 <p className="text-lg text-slate-500 leading-relaxed max-w-2xl mx-auto lg:mx-0">

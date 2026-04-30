@@ -7,7 +7,7 @@ import { SITE } from "@/lib/site-config"
 export default function Topbar() {
   return (
     <div className="w-full bg-[#002D5B]/95 backdrop-blur-md text-white/90 border-b border-white/5">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 text-[10px] font-black uppercase tracking-[0.15em] sm:text-[11px]">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 text-[10px] font-bold uppercase tracking-[0.15em] sm:text-[11px]">
         <div className="flex items-center gap-3">
           <span className="opacity-50">Televendas</span>
           <div className="flex items-center gap-2 text-[#F47920]">

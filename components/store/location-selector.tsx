@@ -66,9 +66,9 @@ export default function LocationSelector() {
           <span className="absolute inset-0 rounded-xl border border-[#F47920]/20 animate-ping opacity-20" />
         </div>
         <div className="flex flex-col items-start leading-tight">
-          <span className="text-[9px] font-black uppercase tracking-widest text-[#002D5B]/40">Região de entrega</span>
+          <span className="text-[9px] font-bold uppercase tracking-widest text-[#002D5B]/40">Região de entrega</span>
           <div className="flex items-center gap-1">
-            <span className="text-xs font-black text-[#002D5B] truncate max-w-[120px]">{location}</span>
+            <span className="text-xs font-bold text-[#002D5B] truncate max-w-[120px]">{location}</span>
             <ChevronDown className={cn("w-3.5 h-3.5 text-[#002D5B]/20 transition-transform", isOpen && "rotate-180")} />
           </div>
         </div>
@@ -81,7 +81,7 @@ export default function LocationSelector() {
             onClick={() => setIsOpen(false)} 
           />
           <div className="absolute top-full right-0 lg:left-0 lg:right-auto mt-3 w-72 p-5 bg-white rounded-[2rem] shadow-2xl border border-border/40 z-[70] animate-in fade-in zoom-in-95 duration-200">
-            <h3 className="text-sm font-black text-[#002D5B] mb-1">Onde você está?</h3>
+            <h3 className="text-sm font-bold text-[#002D5B] mb-1">Onde você está?</h3>
             <p className="text-[11px] text-muted-foreground mb-6">Mostraremos as ofertas e prazos para sua região.</p>
             
             <div className="space-y-3">
@@ -100,11 +100,11 @@ export default function LocationSelector() {
 
               <div className="relative py-2 flex items-center justify-center">
                 <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-border/60" /></div>
-                <span className="relative px-3 bg-white text-[10px] font-black text-muted-foreground uppercase tracking-widest">ou</span>
+                <span className="relative px-3 bg-white text-[10px] font-bold text-muted-foreground uppercase tracking-widest">ou</span>
               </div>
 
               <div className="space-y-2">
-                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest ml-1">Capitais Populares</p>
+                <p className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest ml-1">Capitais Populares</p>
                 <div className="grid grid-cols-2 gap-2">
                   {["São Paulo, SP", "Rio de Janeiro, RJ", "Belo Horizonte, MG", "Curitiba, PR"].map((city) => (
                     <button

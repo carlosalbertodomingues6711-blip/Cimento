@@ -79,14 +79,14 @@ function SectionHeader({
                 <div className="w-8 h-1.5 bg-[#F47920] rounded-full" />
                 <div className="w-12 h-1.5 bg-[#002D5B] rounded-full" />
             </div>
-            <h2 className="text-3xl font-black tracking-tight text-[#002D5B] sm:text-4xl md:text-5xl uppercase">
+            <h2 className="text-3xl font-bold tracking-tight text-[#002D5B] sm:text-4xl md:text-5xl uppercase">
                 {title}
             </h2>
         </div>
         {subtitle && (
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-slate-50 border border-slate-100 rounded-lg">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#F47920]" />
-                <p className="text-[10px] font-black text-slate-500 uppercase tracking-[0.2em]">
+                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-[0.2em]">
                     {subtitle}
                 </p>
             </div>
@@ -95,7 +95,7 @@ function SectionHeader({
       {href && (
         <Link
           href={href}
-          className="group inline-flex h-14 shrink-0 items-center justify-center gap-3 rounded-xl bg-white border border-slate-200 px-8 text-[10px] font-black uppercase tracking-[0.2em] text-[#002D5B] transition-all hover:border-[#002D5B] hover:shadow-xl active:scale-95 sm:self-auto"
+          className="group inline-flex h-14 shrink-0 items-center justify-center gap-3 rounded-xl bg-white border border-slate-200 px-8 text-[10px] font-bold uppercase tracking-[0.2em] text-[#002D5B] transition-all hover:border-[#002D5B] hover:shadow-xl active:scale-95 sm:self-auto"
         >
           {linkLabel || "Explorar Tudo"} 
           <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -136,7 +136,7 @@ export default function HomePage() {
                 <item.icon className="w-6 h-6" />
               </div>
               <div className="min-w-0">
-                <p className="text-[13px] font-bold text-slate-800 uppercase tracking-tight truncate">{item.title}</p>
+                <p className="text-[13px] font-semibold text-slate-800 uppercase tracking-tight truncate">{item.title}</p>
                 <p className="text-[10px] font-medium text-slate-400 uppercase tracking-wider truncate">{item.desc}</p>
               </div>
             </div>
@@ -210,7 +210,7 @@ export default function HomePage() {
           <div className="absolute top-0 right-0 w-64 h-64 bg-[#F47920] opacity-10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
           <div className="relative z-10 flex flex-col lg:flex-row items-center gap-12 text-center lg:text-left">
             <div className="flex-1 space-y-6">
-               <h2 className="text-4xl lg:text-6xl font-black leading-tight">
+               <h2 className="text-4xl lg:text-6xl font-bold leading-tight">
                  Preço de atacado<br/>
                  <span className="text-[#F47920]">para sua obra</span>
                </h2>
@@ -222,7 +222,7 @@ export default function HomePage() {
               href={waLink("Olá! Gostaria de fazer um orçamento.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex h-20 min-w-[300px] items-center justify-center gap-4 rounded-3xl bg-[#F47920] text-xl font-black text-white shadow-xl transition-all hover:scale-105 active:scale-95"
+              className="group flex h-20 min-w-[300px] items-center justify-center gap-4 rounded-3xl bg-[#F47920] text-xl font-bold text-white shadow-xl transition-all hover:scale-105 active:scale-95"
             >
               FALAR COM VENDEDOR
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />

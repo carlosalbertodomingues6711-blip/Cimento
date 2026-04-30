@@ -26,7 +26,7 @@ export default function StoreFooter() {
 
           {/* Links: Institucional */}
           <div>
-            <h4 className="text-lg font-black uppercase tracking-widest mb-6 text-[#F47920]">Institucional</h4>
+            <h4 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#F47920]">Institucional</h4>
             <ul className="space-y-4 text-sm font-medium text-white/70">
               <li><Link href="/sobre" className="hover:text-white transition-colors">Sobre a {SITE.shortName}</Link></li>
               <li><Link href="/nossas-lojas" className="hover:text-white transition-colors">Nossas Lojas</Link></li>
@@ -38,12 +38,12 @@ export default function StoreFooter() {
 
           {/* Links: Atendimento */}
           <div>
-            <h4 className="text-lg font-black uppercase tracking-widest mb-6 text-[#F47920]">Atendimento</h4>
+            <h4 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#F47920]">Atendimento</h4>
             <ul className="space-y-4 text-sm font-medium text-white/70">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-[#F47920] shrink-0" />
                 <div>
-                   <p className="text-white font-bold">{SITE.phoneDisplay}</p>
+                   <p className="text-white font-semibold">{SITE.phoneDisplay}</p>
                    <p className="text-[10px]">Seg a Sex: 08h às 18h</p>
                 </div>
               </li>
@@ -60,20 +60,20 @@ export default function StoreFooter() {
 
           {/* Help / Security */}
           <div>
-            <h4 className="text-lg font-black uppercase tracking-widest mb-6 text-[#F47920]">Segurança</h4>
+            <h4 className="text-lg font-bold uppercase tracking-widest mb-6 text-[#F47920]">Segurança</h4>
             <div className="space-y-6">
               <div className="flex flex-wrap gap-3">
                 <div className="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-xl border border-white/10">
                    <ShieldCheck className="w-5 h-5 text-emerald-400" />
-                   <span className="text-[10px] font-black uppercase">Site Seguro</span>
+                   <span className="text-[10px] font-bold uppercase">Site Seguro</span>
                 </div>
                 <div className="flex items-center gap-2 px-3 py-2 bg-white/5 rounded-xl border border-white/10">
                    <CreditCard className="w-5 h-5 text-[#F47920]" />
-                   <span className="text-[10px] font-black uppercase">Pagamento SSL</span>
+                   <span className="text-[10px] font-bold uppercase">Pagamento SSL</span>
                 </div>
               </div>
               <div className="pt-4 border-t border-white/10">
-                 <p className="text-[10px] font-black uppercase tracking-widest mb-3 opacity-40">Formas de Pagamento</p>
+                 <p className="text-[10px] font-bold uppercase tracking-widest mb-3 opacity-40">Formas de Pagamento</p>
                  <div className="flex flex-wrap gap-2 opacity-80">
                     <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" className="h-6 w-auto grayscale hover:grayscale-0 transition-all" />
                     <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" className="h-6 w-auto grayscale hover:grayscale-0 transition-all" />
@@ -95,7 +95,7 @@ export default function StoreFooter() {
               CNPJ: 00.000.000/0001-00 | Rua Exemplo, 123 - São Paulo/SP
             </p>
           </div>
-          <div className="flex items-center gap-6 text-[10px] font-black uppercase tracking-widest text-white/40">
+          <div className="flex items-center gap-6 text-[10px] font-bold uppercase tracking-widest text-white/40">
             <Link href="/termos" className="hover:text-white transition-colors">Termos de Uso</Link>
             <Link href="/politica-de-cookies" className="hover:text-white transition-colors">Cookies</Link>
           </div>
