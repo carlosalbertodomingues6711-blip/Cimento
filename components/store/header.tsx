@@ -107,11 +107,11 @@ export default function StoreHeader() {
               href="/"
               className="flex shrink-0 items-center"
             >
-              <DynamicBrandLogo variant="full" className="w-44 sm:w-56 lg:w-80" />
+              <DynamicBrandLogo variant="full" className="w-64 sm:w-80 lg:w-[500px]" />
             </Link>
 
             {/* Desktop Search */}
-            <div className="hidden lg:flex flex-1 max-w-2xl mx-12">
+            <div className="hidden lg:flex flex-1 max-w-2xl mx-8">
               <Suspense fallback={<div className="h-12 w-full animate-pulse rounded-lg bg-slate-50" />}>
                 <StoreSearch />
               </Suspense>
