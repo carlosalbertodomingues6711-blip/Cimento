@@ -67,62 +67,79 @@ export default function DynamicBrandLogo({
       )}
     >
       <svg 
-        viewBox="0 0 400 130" 
-        className="w-full h-full"
+        viewBox="0 0 500 160" 
+        className="w-full h-auto drop-shadow-sm"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Navy Background */}
-        <rect width="400" height="95" fill="#002D5B" />
+        {/* Navy Background Wrapper */}
+        <rect width="500" height="115" fill="#002D5B" rx="2" />
         
-        {/* Orange Bottom Bar */}
-        <rect y="95" width="400" height="35" fill="#F47920" />
+        {/* Bottom Orange Bar */}
+        <rect y="115" width="500" height="45" fill="#F47920" rx="2" />
         
-        {/* Main Text: CIMENTO & CAI */}
+        {/* Icon Group (Left Side) */}
+        <g transform="translate(25, 20) scale(1.1)">
+          {/* Cement Mixer Body */}
+          <path d="M40 15C30 15 20 25 20 35C20 45 30 55 40 55H60L75 35L60 15H40Z" fill="white" />
+          <circle cx="40" cy="35" r="10" fill="#002D5B" />
+          <path d="M25 65L40 55L55 65" stroke="white" strokeWidth="4" fill="none" strokeLinecap="round" />
+          <circle cx="25" cy="65" r="4" fill="white" />
+          
+          {/* Hand with Trowel */}
+          <g transform="translate(50, 45)">
+            <path d="M0 0L15 -15L35 5L20 20Z" fill="white" />
+            <path d="M15 -5C12 -5 10 -3 10 0V15H20V0C20 -3 18 -5 15 -5Z" fill="#002D5B" transform="translate(5, 0) scale(0.6)" />
+          </g>
+        </g>
+        
+        {/* Main Text Content */}
+        <g transform="translate(130, 0)">
+          {/* CIMENTO & CAL */}
+          <text 
+            y="65" 
+            fill="white" 
+            style={{ font: '900 64px sans-serif', letterSpacing: '-0.02em' }}
+          >
+            CIMENTO
+          </text>
+          
+          <text 
+            x="300" 
+            y="68" 
+            fill="#F47920" 
+            style={{ font: '900 78px sans-serif' }}
+          >
+            &
+          </text>
+          
+          <text 
+            x="360" 
+            y="65" 
+            fill="white" 
+            style={{ font: '900 64px sans-serif', letterSpacing: '-0.02em' }}
+          >
+            CAL
+          </text>
+          
+          {/* DISTRIBUIDORA */}
+          <text 
+            x="180" 
+            y="98" 
+            fill="white" 
+            textAnchor="middle"
+            style={{ font: '700 32px sans-serif', letterSpacing: '0.45em' }}
+          >
+            DISTRIBUIDORA
+          </text>
+        </g>
+        
+        {/* Bottom Bar Text: ATACADO DE CONSTRUÇÃO */}
         <text 
-          x="20" 
-          y="68" 
-          fill="white" 
-          style={{ font: '900 68px var(--font-heading), sans-serif', letterSpacing: '-0.02em' }}
-        >
-          CIMENTO
-        </text>
-        
-        <text 
-          x="282" 
-          y="72" 
-          fill="#F47920" 
-          style={{ font: '900 82px var(--font-heading), sans-serif' }}
-        >
-          &
-        </text>
-        
-        <text 
-          x="332" 
-          y="68" 
-          fill="white" 
-          style={{ font: '900 68px var(--font-heading), sans-serif', letterSpacing: '-0.02em' }}
-        >
-          CAI
-        </text>
-        
-        {/* Subtitle: DISTRIBUIDORA */}
-        <text 
-          x="200" 
-          y="90" 
+          x="250" 
+          y="146" 
           fill="white" 
           textAnchor="middle"
-          style={{ font: '700 18px var(--font-heading), sans-serif', letterSpacing: '0.6em' }}
-        >
-          DISTRIBUIDORA
-        </text>
-        
-        {/* Bottom Text: ATACADO DE CONSTRUÇÃO */}
-        <text 
-          x="200" 
-          y="120" 
-          fill="white" 
-          textAnchor="middle"
-          style={{ font: '900 20px var(--font-heading), sans-serif', letterSpacing: '0.1em' }}
+          style={{ font: '900 28px sans-serif', letterSpacing: '0.15em' }}
         >
           ATACADO DE CONSTRUÇÃO
         </text>
