@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 import { SITE } from "@/lib/site-config"
 import { getSiteSettingsPublic } from "@/lib/fetchers/site-settings-public"
 
-type Variant = "full" | "compact" | "mono"
+type Variant = "full" | "compact" | "mono" | "square"
 
 export default function DynamicBrandLogo({
   variant = "full",
@@ -19,45 +19,64 @@ export default function DynamicBrandLogo({
 }) {
   const { data: row } = useSWR("site-settings-public", getSiteSettingsPublic, { revalidateOnFocus: false })
   
-  // Use user-provided logo path first
-  const url = "/logo-oficial.png" 
-
-  const FallbackLogo = () => (
-    <div className={cn("flex items-center gap-3", className)}>
-      <div className={cn(
-        "flex h-10 w-10 items-center justify-center rounded-xl rotate-3 shadow-lg transition-transform hover:rotate-0",
-        inverted ? "bg-white text-[#002D5B]" : "bg-[#002D5B] text-white"
-      )}>
-        <div className="relative">
-          <div className="w-5 h-5 border-2 border-current rounded-sm rotate-45" />
-          <div className="absolute -top-1 -right-1 w-2 h-2 bg-[#F47920] rounded-full animate-pulse" />
-        </div>
-      </div>
-      <div className="flex flex-col leading-none">
-        <span
-          className={cn(
-            "font-heading text-xl font-bold tracking-tighter sm:text-2xl italic",
-            inverted ? "text-white" : "text-[#002D5B]",
-          )}
+  if (variant === "square") {
+    return (
+      <div className={cn("flex items-center justify-center select-none", className)}>
+        <svg 
+          viewBox="0 0 400 400" 
+          className="w-full h-auto drop-shadow-md"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          {SITE.shortName.toUpperCase()}
-        </span>
-        <span
-          className={cn(
-            "text-[9px] font-bold uppercase tracking-[0.3em] sm:text-[10px]",
-            inverted ? "text-white/60" : "text-[#F47920]",
-          )}
-        >
-          Distribuidora
-        </span>
-      </div>
-    </div>
-  )
+          {/* Rounded Navy Background */}
+          <rect width="400" height="400" rx="40" fill="#002D5B" />
+          
+          {/* White Main Shape (Bag-like) */}
+          <path 
+            d="M100 100 Q100 80 120 80 H280 Q300 80 300 100 V300 Q300 320 280 320 H120 Q100 320 100 300 Z" 
+            fill="white" 
+          />
+          
+          {/* Orange Top Triangle */}
+          <path d="M140 80 L200 160 L260 80 Z" fill="#F47920" />
+          <path d="M140 80 L200 160 L260 80" fill="none" stroke="#002D5B" strokeWidth="8" strokeLinejoin="round" />
 
-  // In a real scenario, we'd check if /logo-oficial.png exists. 
-  // For now, we'll assume it exists if the user sent it, 
-  // but if it fails to load, the browser will show a broken image.
-  // To be safe, we could use a state to handle error and fallback.
+          {/* Central Blue 'C' with Trowel */}
+          <g transform="translate(140, 180)">
+            <path 
+              d="M100 0 A50 50 0 1 0 100 100" 
+              fill="none" 
+              stroke="#002D5B" 
+              strokeWidth="45" 
+              strokeLinecap="butt" 
+            />
+            {/* Trowel Icon */}
+            <g transform="translate(45, 35) scale(1.2)">
+              <path d="M0 0 L25 -10 L45 10 L20 20 Z" fill="#002D5B" />
+              <rect x="45" y="5" width="20" height="10" rx="2" fill="#002D5B" />
+            </g>
+          </g>
+
+          {/* Bottom Orange Bag */}
+          <g transform="translate(175, 275) scale(1.2)">
+            <rect width="42" height="50" rx="6" fill="#F47920" />
+            <circle cx="15" cy="20" r="3" fill="#002D5B" />
+            <circle cx="27" cy="20" r="3" fill="#002D5B" />
+          </g>
+
+          {/* Text: C&C DISTRIBUIDORA */}
+          <text 
+            x="200" 
+            y="370" 
+            fill="white" 
+            textAnchor="middle"
+            style={{ font: 'bold 24px sans-serif', letterSpacing: '0.1em' }}
+          >
+            C&C DISTRIBUIDORA
+          </text>
+        </svg>
+      </div>
+    )
+  }
 
   return (
     <div
