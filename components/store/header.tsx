@@ -198,7 +198,7 @@ export default function StoreHeader() {
               <div className="w-px h-4 bg-border/40 mx-2" />
               <li>
                 <Link
-                  href="/calculadora"
+                  href="/calculadora-de-materiais"
                   className="flex items-center gap-2 px-6 py-3 text-sm font-bold text-[#002D5B] uppercase tracking-wide hover:bg-muted/50 rounded-xl transition-all"
                 >
                   Calculadora de Materiais
@@ -230,7 +230,7 @@ export default function StoreHeader() {
               Ver catálogo completo
             </Link>
             <Link
-              href="/calculadora"
+              href="/calculadora-de-materiais"
               onClick={() => setMenuOpen(false)}
               className="block rounded-2xl px-4 py-3.5 text-sm font-semibold text-[#F47920] transition hover:bg-muted/80 active:scale-[0.99]"
             >
