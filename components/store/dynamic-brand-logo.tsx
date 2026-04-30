@@ -62,24 +62,71 @@ export default function DynamicBrandLogo({
   return (
     <div
       className={cn(
-        "flex items-center gap-2.5",
-        variant === "mono" && "text-foreground",
-        inverted && "text-white",
+        "flex items-center select-none",
         className,
       )}
     >
-      <Image
-        src={url}
-        alt={SITE.shortName}
-        width={400}
-        height={120}
-        unoptimized
-        className="h-10 w-auto max-w-[280px] object-contain object-left sm:h-14 lg:h-16"
-        priority
-        onError={(e) => {
-           // Fallback logic could go here, but next/image doesn't easily support it via onError in this way
-        }}
-      />
+      <svg 
+        viewBox="0 0 400 130" 
+        className="w-full h-full"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* Navy Background */}
+        <rect width="400" height="95" fill="#002D5B" />
+        
+        {/* Orange Bottom Bar */}
+        <rect y="95" width="400" height="35" fill="#F47920" />
+        
+        {/* Main Text: CIMENTO & CAI */}
+        <text 
+          x="20" 
+          y="68" 
+          fill="white" 
+          style={{ font: '900 68px var(--font-heading), sans-serif', letterSpacing: '-0.02em' }}
+        >
+          CIMENTO
+        </text>
+        
+        <text 
+          x="282" 
+          y="72" 
+          fill="#F47920" 
+          style={{ font: '900 82px var(--font-heading), sans-serif' }}
+        >
+          &
+        </text>
+        
+        <text 
+          x="332" 
+          y="68" 
+          fill="white" 
+          style={{ font: '900 68px var(--font-heading), sans-serif', letterSpacing: '-0.02em' }}
+        >
+          CAI
+        </text>
+        
+        {/* Subtitle: DISTRIBUIDORA */}
+        <text 
+          x="200" 
+          y="90" 
+          fill="white" 
+          textAnchor="middle"
+          style={{ font: '700 18px var(--font-heading), sans-serif', letterSpacing: '0.6em' }}
+        >
+          DISTRIBUIDORA
+        </text>
+        
+        {/* Bottom Text: ATACADO DE CONSTRUÇÃO */}
+        <text 
+          x="200" 
+          y="120" 
+          fill="white" 
+          textAnchor="middle"
+          style={{ font: '900 20px var(--font-heading), sans-serif', letterSpacing: '0.1em' }}
+        >
+          ATACADO DE CONSTRUÇÃO
+        </text>
+      </svg>
     </div>
   )
 }

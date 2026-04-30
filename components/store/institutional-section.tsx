@@ -11,25 +11,25 @@ const pillars = [
     icon: Warehouse, 
     label: "Escala e estrutura", 
     desc: "Fornecimento contínuo para obras de todos os portes.",
-    color: "bg-blue-50 text-blue-600"
+    color: "bg-[#002D5B]/10 text-[#002D5B]"
   },
   { 
     icon: CheckCircle2, 
     label: "Confiança e segurança", 
     desc: "Materiais com rastreio e parcerias sólidas no setor.",
-    color: "bg-emerald-50 text-emerald-600"
+    color: "bg-[#F47920]/10 text-[#F47920]"
   },
   { 
     icon: Timer, 
     label: "Logística ágil", 
     desc: "Entregas organizadas para manter seu cronograma em dia.",
-    color: "bg-amber-50 text-amber-600"
+    color: "bg-[#002D5B]/10 text-[#002D5B]"
   },
   { 
     icon: Star, 
     label: "Autoridade no setor", 
     desc: "Experiência em materiais de construção e atacado.",
-    color: "bg-purple-50 text-purple-600"
+    color: "bg-[#F47920]/10 text-[#F47920]"
   },
 ]
 
