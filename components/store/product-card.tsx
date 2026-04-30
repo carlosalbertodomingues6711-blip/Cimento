@@ -77,17 +77,21 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       {/* Premium Floating Badges */}
-      <div className="pointer-events-none absolute left-0 top-4 z-10 flex flex-col gap-2">
+      <div className="pointer-events-none absolute left-0 top-3 z-10 flex flex-col gap-1.5">
         {product.is_new && (
-          <div className="flex items-center bg-emerald-600/95 backdrop-blur-sm text-white pl-3.5 pr-3 py-1.5 rounded-r-full shadow-[4px_4px_12px_rgba(16,185,129,0.3)] border-y border-r border-emerald-400/30">
-            <Sparkles className="w-3 h-3 mr-2 text-emerald-200 animate-pulse" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.12em]">Lançamento</span>
+          <div className="relative flex items-center overflow-hidden bg-gradient-to-r from-emerald-500 to-emerald-600 text-white pl-3 pr-4 py-[5px] rounded-r-full shadow-[2px_4px_16px_rgba(16,185,129,0.45)] border-y border-r border-emerald-300/20">
+            {/* shimmer */}
+            <span className="pointer-events-none absolute inset-0 translate-x-[-110%] animate-[badge-shimmer_2.8s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg]" />
+            <Sparkles className="relative z-10 w-[11px] h-[11px] mr-1.5 text-emerald-100" />
+            <span className="relative z-10 text-[10px] font-extrabold uppercase tracking-[0.14em] drop-shadow-sm">Lançamento</span>
           </div>
         )}
         {discount > 0 && (
-          <div className="flex items-center bg-gradient-to-r from-[#F47920] to-[#e06b10] text-white pl-3.5 pr-3 py-1.5 rounded-r-full shadow-[4px_4px_12px_rgba(244,121,32,0.3)] border-y border-r border-white/20">
-            <Tag className="w-3 h-3 mr-2 text-orange-200" />
-            <span className="text-[10px] font-bold uppercase tracking-tight">-{discount}% OFF</span>
+          <div className="relative flex items-center overflow-hidden bg-gradient-to-r from-[#F47920] to-[#d95f0a] text-white pl-3 pr-4 py-[5px] rounded-r-full shadow-[2px_4px_16px_rgba(244,121,32,0.5)] border-y border-r border-white/15">
+            {/* shimmer */}
+            <span className="pointer-events-none absolute inset-0 translate-x-[-110%] animate-[badge-shimmer_2.4s_ease-in-out_infinite_0.6s] bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg]" />
+            <Tag className="relative z-10 w-[11px] h-[11px] mr-1.5 text-orange-100" />
+            <span className="relative z-10 text-[10px] font-extrabold uppercase tracking-[0.1em] drop-shadow-sm">-{discount}%&nbsp;OFF</span>
           </div>
         )}
       </div>

@@ -170,3 +170,9 @@
     @apply transition-transform duration-200 active:scale-[0.97];
   }
 }
+
+@keyframes badge-shimmer {
+  0%   { transform: translateX(-110%) skewX(-20deg); }
+  60%  { transform: translateX(110%)  skewX(-20deg); }
+  100% { transform: translateX(110%)  skewX(-20deg); }
+}
