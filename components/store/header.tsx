@@ -77,8 +77,8 @@ export default function StoreHeader() {
   }, [])
 
   const barSurface = scrolled 
-    ? "bg-white/40 backdrop-blur-2xl border-b border-white/20 shadow-[0_8px_32px_rgba(0,0,0,0.05)]" 
-    : "bg-transparent border-b border-transparent"
+    ? "glass shadow-app-lg border-b border-[#002D5B]/5" 
+    : "bg-white/80 backdrop-blur-md border-b border-slate-100"
 
   return (
     <header
@@ -90,14 +90,14 @@ export default function StoreHeader() {
     >
       <Topbar />
       <div className={`${barSurface} transition-all duration-500`}>
-        <div className="mx-auto max-w-7xl px-4 lg:px-6">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8">
           {/* Main Bar */}
-          <div className="flex items-center justify-between gap-6 py-4 lg:py-5">
+          <div className="flex items-center justify-between gap-4 py-3 lg:py-5">
             {/* Mobile Menu Trigger */}
             <button
               type="button"
               onClick={() => setMenuOpen(!menuOpen)}
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-[#002D5B] lg:hidden"
+              className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-50 text-[#002D5B] lg:hidden hover:bg-slate-100 transition-colors border border-slate-200/60"
             >
               {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -105,49 +105,51 @@ export default function StoreHeader() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex shrink-0 items-center"
+              className="flex shrink-0 items-center transition-transform hover:scale-[1.02] active:scale-95"
             >
-              <DynamicBrandLogo variant="full" className="h-9 lg:h-12 w-auto" />
+              <DynamicBrandLogo variant="full" className="h-8 sm:h-10 lg:h-14 w-auto" />
             </Link>
 
             {/* Desktop Search */}
             <div className="hidden lg:flex flex-1 max-w-2xl mx-12">
-              <Suspense fallback={<div className="h-12 w-full animate-pulse rounded-lg bg-slate-50" />}>
+              <Suspense fallback={<div className="h-12 w-full animate-pulse rounded-2xl bg-slate-50" />}>
                 <StoreSearch />
               </Suspense>
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-4 lg:gap-8">
+            <div className="flex items-center gap-3 lg:gap-8">
               {/* User Account */}
               <Link
                 href={user ? "/minha-conta" : "/login"}
-                className="hidden sm:flex items-center gap-3 group"
+                className="hidden sm:flex items-center gap-3 group px-4 py-2 rounded-2xl hover:bg-slate-50 transition-all border border-transparent hover:border-slate-100"
               >
-                <User className="h-5 w-5 text-slate-400 group-hover:text-[#F47920] transition-colors" />
+                <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100 group-hover:bg-white group-hover:border-[#F47920]/20 transition-all">
+                  <User className="h-5 w-5 text-slate-400 group-hover:text-[#F47920] transition-colors" />
+                </div>
                 <div className="hidden lg:flex flex-col items-start leading-tight">
-                  <span className="text-[10px] font-medium text-slate-400 uppercase tracking-wider">
+                  <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
                     {user ? "Bem-vindo," : "Acesse sua"}
                   </span>
-                  <span className="text-[12px] font-bold text-[#002D5B] truncate max-w-[120px]">
+                  <span className="text-[12px] font-black text-[#002D5B] truncate max-w-[120px] uppercase italic">
                     {user ? (user.name || user.email.split("@")[0]) : "Conta"}
                   </span>
                 </div>
               </Link>
 
               {/* Desktop Location Selector */}
-              <div className="hidden lg:block border-l border-slate-200 pl-6">
+              <div className="hidden lg:block border-l border-slate-200 pl-6 h-10">
                 <LocationSelector />
               </div>
 
               {/* Cart */}
               <Link
                 href="/carrinho"
-                className="group relative flex h-10 w-10 items-center justify-center rounded-lg bg-white border border-slate-200 text-[#002D5B] hover:border-[#F47920] hover:text-[#F47920] transition-all"
+                className="group relative flex h-11 w-11 items-center justify-center rounded-2xl bg-white border border-slate-200 text-[#002D5B] hover:border-[#F47920] hover:text-[#F47920] transition-all shadow-sm hover:shadow-md active:scale-90"
               >
                 <ShoppingCart className="h-5 w-5" />
                 {cartCount > 0 && (
-                  <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#F47920] px-1 text-[10px] font-black text-white shadow-sm ring-2 ring-white">
+                  <span className="absolute -right-2 -top-2 flex h-5 min-w-5 items-center justify-center rounded-full bg-[#F47920] px-1 text-[10px] font-black text-white shadow-lg ring-2 ring-white animate-in zoom-in duration-300">
                     {cartCount > 99 ? "99+" : cartCount}
                   </span>
                 )}
@@ -157,7 +159,7 @@ export default function StoreHeader() {
 
           {/* Search Row (Mobile/Tablet Only) */}
           <div className="pb-3 lg:hidden">
-            <Suspense fallback={<div className="h-12 w-full animate-pulse rounded-lg bg-slate-50" />}>
+            <Suspense fallback={<div className="h-12 w-full animate-pulse rounded-2xl bg-slate-50" />}>
               <StoreSearch />
             </Suspense>
           </div>

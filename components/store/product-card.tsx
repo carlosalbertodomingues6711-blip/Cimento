@@ -75,16 +75,16 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
   )
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-slate-200/60 bg-white shadow-app transition-all duration-500 hover:shadow-app-lg hover:-translate-y-2">
       {/* Premium Floating Badges */}
       <div className="pointer-events-none absolute left-0 top-6 z-10 flex flex-col gap-2">
         {product.is_new && (
-          <div className="flex items-center bg-emerald-600 text-white pl-4 pr-3 py-1.5 rounded-r-xl shadow-lg shadow-emerald-900/10 border-l-4 border-emerald-400">
-            <span className="text-[10px] font-black uppercase tracking-[0.1em]">Lançamento</span>
+          <div className="flex items-center bg-emerald-600 text-white pl-4 pr-3 py-1.5 rounded-r-2xl shadow-lg shadow-emerald-900/10 border-l-4 border-emerald-300">
+            <span className="text-[10px] font-black uppercase tracking-widest">Novo</span>
           </div>
         )}
         {discount > 0 && (
-          <div className="flex items-center bg-gradient-to-r from-[#F47920] to-[#e06b10] text-white pl-4 pr-3 py-1.5 rounded-r-xl shadow-lg shadow-orange-900/10 border-l-4 border-orange-300">
+          <div className="flex items-center bg-gradient-to-r from-[#F47920] to-[#e06b10] text-white pl-4 pr-3 py-1.5 rounded-r-2xl shadow-lg shadow-orange-900/10 border-l-4 border-orange-300">
             <span className="text-[11px] font-black uppercase tracking-tight">-{discount}% OFF</span>
           </div>
         )}
@@ -92,7 +92,7 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
 
       <Link
         href={`/produto/${product.slug}`}
-        className="relative block aspect-square overflow-hidden bg-slate-50 border-b border-slate-100"
+        className="relative block aspect-[4/4] overflow-hidden bg-slate-50/50"
       >
         {product.image_url ? (
           <Image
@@ -100,7 +100,7 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
             alt={product.name}
             fill
             sizes="(max-width:768px) 50vw, 25vw"
-            className="object-contain p-8 transition-transform duration-500 group-hover:scale-105"
+            className="object-contain p-6 sm:p-10 transition-transform duration-[1500ms] group-hover:scale-110"
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center">
@@ -109,17 +109,17 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
         )}
       </Link>
 
-      <div className="flex flex-1 flex-col p-5">
-        <div className="mb-3 flex items-center justify-between">
-            <div className="flex items-center gap-1.5 text-[9px] font-bold text-emerald-600 uppercase tracking-widest">
-                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
-                Disponível
+      <div className="flex flex-1 flex-col p-4 sm:p-6">
+        <div className="mb-2.5 flex items-center justify-between">
+            <div className="flex items-center gap-1.5 text-[9px] font-black text-emerald-600 uppercase tracking-widest">
+                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse" />
+                Estoque OK
             </div>
-            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-widest">Cód: {product.id.slice(0, 6)}</span>
+            <span className="text-[9px] font-black text-slate-400 uppercase tracking-widest opacity-60">ID: {product.id.slice(0, 4)}</span>
         </div>
 
-        <Link href={`/produto/${product.slug}`} className="mb-5">
-          <h3 className="line-clamp-2 text-[14px] font-bold leading-tight text-slate-800 transition-colors group-hover:text-[#F47920]">
+        <Link href={`/produto/${product.slug}`} className="mb-4">
+          <h3 className="line-clamp-2 text-sm sm:text-base font-black leading-tight text-[#002D5B] transition-colors group-hover:text-[#F47920] uppercase italic">
             {product.name}
           </h3>
         </Link>
@@ -127,38 +127,35 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
         <div className="mt-auto space-y-4">
           <div className="border-t border-slate-100 pt-4">
             {product.original_price && product.original_price > product.price && (
-              <p className="text-[11px] text-slate-400 line-through font-medium mb-0.5">
+              <p className="text-[11px] text-slate-400 line-through font-bold mb-0.5">
                 R$ {Number(product.original_price).toFixed(2).replace(".", ",")}
               </p>
             )}
             <div className="flex items-baseline gap-1.5">
-              <p className="text-2xl font-black text-[#002D5B] tabular-nums tracking-tighter">
-                <span className="text-xs font-bold mr-1 opacity-60">R$</span>
+              <p className="text-2xl sm:text-3xl font-black text-[#002D5B] tabular-nums tracking-tighter">
+                <span className="text-xs font-black mr-1 opacity-40">R$</span>
                 {Number(product.price).toFixed(2).replace(".", ",")}
               </p>
-              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">/{product.unit}</span>
+              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">/{product.unit}</span>
             </div>
           </div>
 
-          <div className="flex gap-2.5">
+          <div className="flex gap-2 sm:gap-3">
             <button
               type="button"
               onClick={() => addToCart(product)}
-              className="group/buy relative flex-1 flex h-12 items-center justify-center rounded-xl bg-gradient-to-r from-[#002D5B] to-[#004a94] text-white text-[10px] font-black uppercase tracking-[0.15em] shadow-lg shadow-blue-900/10 transition-all duration-300 hover:shadow-blue-900/20 hover:-translate-y-0.5 active:scale-95 overflow-hidden"
+              className="group/buy relative flex-1 flex h-12 sm:h-14 items-center justify-center rounded-2xl bg-gradient-to-r from-[#002D5B] to-[#003d7a] text-white text-[10px] font-black uppercase tracking-[0.15em] shadow-lg shadow-blue-900/10 transition-all duration-300 hover:shadow-blue-900/20 hover:-translate-y-1 active:scale-95 overflow-hidden"
             >
-              <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/buy:opacity-100 transition-opacity" />
-              <div className="absolute inset-0 translate-x-[-100%] group-hover/buy:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg]" />
               <ShoppingCart className="h-4 w-4 mr-2 relative z-10" />
-              <span className="relative z-10">Comprar</span>
+              <span className="relative z-10">Carrinho</span>
             </button>
             <a
               href={waHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="group/wa relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#F47920] to-[#e06b10] text-white shadow-lg shadow-orange-200 transition-all duration-300 hover:shadow-orange-300 hover:-translate-y-0.5 active:scale-95 overflow-hidden"
+              className="group/wa relative flex h-12 sm:h-14 w-12 sm:w-14 items-center justify-center rounded-2xl bg-[#F47920] text-white shadow-lg shadow-orange-900/10 transition-all duration-300 hover:shadow-orange-900/20 hover:-translate-y-1 active:scale-95"
               title="Orçamento via WhatsApp"
             >
-              <div className="absolute inset-0 translate-x-[-100%] group-hover/wa:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg]" />
               <MessageCircle className="h-5 w-5 fill-current relative z-10" />
             </a>
           </div>

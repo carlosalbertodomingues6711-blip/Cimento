@@ -75,13 +75,25 @@ export default function HeroBanner() {
       onTouchEnd={() => setIsPaused(false)}
     >
       <div className="relative mx-auto w-full max-w-[1920px]">
-        <div className="overflow-hidden" ref={emblaRef}>
+        <div className="overflow-hidden sm:rounded-[2.5rem] shadow-app-lg" ref={emblaRef}>
           <div className="flex touch-pan-y">
             {slides.map((banner, i) => (
               <div key={banner.id} className="relative min-w-0 shrink-0 grow-0 basis-full">
-                <div className="relative aspect-[4/3] sm:aspect-[16/6] lg:aspect-[1920/430] w-full overflow-hidden">
+                <div className="relative aspect-[4/5] sm:aspect-[16/7] lg:aspect-[1920/520] w-full overflow-hidden">
                   {banner.link ? (
-                    <Link href={banner.link} className="block size-full">
+                    <Link href={banner.link} className="block size-full group/banner">
+                      <Image
+                        src={banner.image_url}
+                        alt="Banner"
+                        fill
+                        priority={i === 0}
+                        sizes="100vw"
+                        className="object-cover transition-transform duration-[2000ms] group-hover/banner:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
+                    </Link>
+                  ) : (
+                    <>
                       <Image
                         src={banner.image_url}
                         alt="Banner"
@@ -90,16 +102,8 @@ export default function HeroBanner() {
                         sizes="100vw"
                         className="object-cover"
                       />
-                    </Link>
-                  ) : (
-                    <Image
-                      src={banner.image_url}
-                      alt="Banner"
-                      fill
-                      priority={i === 0}
-                      sizes="100vw"
-                      className="object-cover"
-                    />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
+                    </>
                   )}
                 </div>
               </div>
@@ -112,7 +116,7 @@ export default function HeroBanner() {
             <button
               type="button"
               onClick={() => emblaApi?.scrollPrev()}
-              className="absolute left-4 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white shadow-sm backdrop-blur-md transition hover:bg-black/40 lg:flex lg:h-12 lg:w-12"
+              className="absolute left-6 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-2xl glass h-14 w-14 text-[#002D5B] shadow-app-lg transition-all hover:bg-[#F47920] hover:text-white lg:flex active:scale-90"
               aria-label="Anterior"
             >
               <ChevronLeft className="h-6 w-6" />
@@ -120,20 +124,20 @@ export default function HeroBanner() {
             <button
               type="button"
               onClick={() => emblaApi?.scrollNext()}
-              className="absolute right-4 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-black/20 text-white shadow-sm backdrop-blur-md transition hover:bg-black/40 lg:flex lg:h-12 lg:w-12"
+              className="absolute right-6 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-2xl glass h-14 w-14 text-[#002D5B] shadow-app-lg transition-all hover:bg-[#F47920] hover:text-white lg:flex active:scale-90"
               aria-label="Próximo"
             >
               <ChevronRight className="h-6 w-6" />
             </button>
 
-            <div className="absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 gap-2">
+            <div className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 gap-3 bg-black/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/10">
               {slides.map((_, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => emblaApi?.scrollTo(i)}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === selected ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
+                  className={`h-1.5 rounded-full transition-all duration-500 ${
+                    i === selected ? "w-10 bg-[#F47920]" : "w-2 bg-white/60 hover:bg-white"
                   }`}
                   aria-label={`Ir para slide ${i + 1}`}
                 />
