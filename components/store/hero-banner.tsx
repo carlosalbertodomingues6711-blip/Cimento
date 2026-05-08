@@ -79,7 +79,8 @@ export default function HeroBanner() {
           <div className="flex touch-pan-y">
             {slides.map((banner, i) => (
               <div key={banner.id} className="relative min-w-0 shrink-0 grow-0 basis-full">
-                <div className="relative aspect-[4/5] sm:aspect-[16/7] lg:aspect-[1920/520] w-full overflow-hidden">
+                {/* Responsive Aspect Ratio: Vertical on Mobile, Panoramic on Desktop */}
+                <div className="relative aspect-[3/4] sm:aspect-[16/6] lg:aspect-[1920/500] w-full overflow-hidden bg-slate-100">
                   {banner.link ? (
                     <Link href={banner.link} className="block size-full group/banner">
                       <Image
@@ -88,9 +89,9 @@ export default function HeroBanner() {
                         fill
                         priority={i === 0}
                         sizes="100vw"
-                        className="object-cover transition-transform duration-[2000ms] group-hover/banner:scale-105"
+                        className="object-cover transition-transform duration-[3000ms] group-hover/banner:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-40 group-hover/banner:opacity-60 transition-opacity" />
                     </Link>
                   ) : (
                     <>
@@ -102,7 +103,7 @@ export default function HeroBanner() {
                         sizes="100vw"
                         className="object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-60" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-40" />
                     </>
                   )}
                 </div>
