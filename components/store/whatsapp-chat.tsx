@@ -5,12 +5,11 @@ import { MessageCircle, X, Send } from "lucide-react"
 import Image from "next/image"
 import { SITE } from "@/lib/site-config"
 import { cn } from "@/lib/utils"
-import { getWhatsAppRotationLink } from "@/lib/whatsapp-rotation"
 
 export default function WhatsAppChat() {
   const [isOpen, setIsOpen] = useState(false)
   
-  const salespersonImg = "/images/brand/attendant.png"
+  const salespersonImg = "/atendente-vendas.jpg"
 
   const departments = [
     { label: "Quero fazer um orcamento", msg: "Olá! Gostaria de fazer um orçamento." },
@@ -65,10 +64,7 @@ export default function WhatsAppChat() {
                 {departments.map((dept, i) => (
                   <button
                     key={i}
-                    onClick={async () => {
-                      const link = await getWhatsAppRotationLink(dept.msg)
-                      window.open(link, "_blank")
-                    }}
+                    onClick={() => window.open(waLink(dept.msg), "_blank")}
                     className="w-full p-3.5 text-left bg-white border border-slate-200 rounded-2xl hover:border-[#F47920]/50 hover:bg-slate-50 transition-all text-[13px] font-medium text-slate-600"
                   >
                     {dept.label}
@@ -85,20 +81,16 @@ export default function WhatsAppChat() {
                 type="text" 
                 placeholder="Digite sua mensagem..." 
                 className="flex-1 bg-transparent text-[13px] outline-none text-slate-600 placeholder:text-slate-400"
-                onKeyDown={async (e) => {
+                onKeyDown={(e) => {
                   if (e.key === 'Enter' && e.currentTarget.value) {
-                    const link = await getWhatsAppRotationLink(e.currentTarget.value)
-                    window.open(link, "_blank")
+                    window.open(waLink(e.currentTarget.value), "_blank")
                   }
                 }}
               />
               <button 
-                onClick={async () => {
+                onClick={() => {
                   const input = document.querySelector('input[placeholder="Digite sua mensagem..."]') as HTMLInputElement
-                  if (input?.value) {
-                    const link = await getWhatsAppRotationLink(input.value)
-                    window.open(link, "_blank")
-                  }
+                  if (input?.value) window.open(waLink(input.value), "_blank")
                 }}
                 className="w-9 h-9 flex items-center justify-center rounded-full bg-[#F47920] text-white shadow-lg active:scale-95 transition-all"
               >
@@ -112,23 +104,10 @@ export default function WhatsAppChat() {
       {/* Floating Trigger (Standard Rounded) */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-16 h-16 rounded-full bg-[#F47920] text-white shadow-[0_10px_30px_rgba(244,121,32,0.3)] flex items-center justify-center transition-all hover:scale-110 active:scale-90 overflow-hidden border-2 border-white"
+        className="w-16 h-16 rounded-full bg-[#F47920] text-white shadow-[0_10px_30px_rgba(244,121,32,0.3)] flex items-center justify-center transition-all hover:scale-110 active:scale-90"
       >
-        {isOpen ? (
-          <X className="w-8 h-8" />
-        ) : (
-          <div className="relative w-full h-full">
-            <Image 
-              src={salespersonImg} 
-              alt="Chat" 
-              fill 
-              className="object-cover"
-            />
-            <div className="absolute bottom-1 right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full shadow-sm" />
-          </div>
-        )}
+        {isOpen ? <X className="w-8 h-8" /> : <MessageCircle className="w-8 h-8 fill-current" />}
       </button>
     </div>
   )
-
 }

@@ -11,25 +11,25 @@ const pillars = [
     icon: Warehouse, 
     label: "Escala e estrutura", 
     desc: "Fornecimento contínuo para obras de todos os portes.",
-    color: "bg-[#002D5B]/10 text-[#002D5B]"
+    color: "bg-blue-50 text-blue-600"
   },
   { 
     icon: CheckCircle2, 
     label: "Confiança e segurança", 
     desc: "Materiais com rastreio e parcerias sólidas no setor.",
-    color: "bg-[#F47920]/10 text-[#F47920]"
+    color: "bg-emerald-50 text-emerald-600"
   },
   { 
     icon: Timer, 
     label: "Logística ágil", 
     desc: "Entregas organizadas para manter seu cronograma em dia.",
-    color: "bg-[#002D5B]/10 text-[#002D5B]"
+    color: "bg-amber-50 text-amber-600"
   },
   { 
     icon: Star, 
     label: "Autoridade no setor", 
     desc: "Experiência em materiais de construção e atacado.",
-    color: "bg-[#F47920]/10 text-[#F47920]"
+    color: "bg-purple-50 text-purple-600"
   },
 ]
 
@@ -55,7 +55,7 @@ export default function InstitutionalSection() {
             </div>
             
             <div className="space-y-6">
-                <h2 className="text-4xl md:text-5xl font-bold text-[#002D5B] tracking-tight leading-[1.1] italic">
+                <h2 className="text-4xl md:text-5xl font-black text-[#002D5B] tracking-tight leading-[1.1] italic">
                     {title}
                 </h2>
                 <p className="text-lg text-slate-500 leading-relaxed max-w-2xl mx-auto lg:mx-0">

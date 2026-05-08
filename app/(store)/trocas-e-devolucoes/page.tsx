@@ -1,50 +1,43 @@
+import type { Metadata } from "next"
 import InstitutionalLayout from "@/components/store/institutional-layout"
-import { SITE } from "@/lib/site-config"
+import WhatsAppCta from "@/components/store/whatsapp-cta"
 
-export const metadata = {
-  title: `Trocas e Devoluções | ${SITE.shortName}`,
-  description: `Saiba como proceder em casos de troca ou devolução na ${SITE.shortName}.`,
+export const metadata: Metadata = {
+  title: "Trocas e devoluções",
 }
 
-export default function TrocasPage() {
+export default function TrocasDevolucoesPage() {
   return (
-    <InstitutionalLayout 
-      title="Trocas e Devoluções" 
-      subtitle="Transparência e respeito ao consumidor em todas as situações."
+    <InstitutionalLayout
+      title="Trocas e devoluções"
+      subtitle="Política alinhada à natureza dos materiais de construção."
     >
-      <div className="space-y-6">
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-[#002D5B]">Condições Gerais</h2>
-          <p>
-            O compromisso da <strong>{SITE.shortName}</strong> é a sua total satisfação nas compras realizadas em nosso site. 
-            Visando a uma parceria de respeito e confiança, criamos a Política de Troca e Devolução, com base no Código de Defesa do Consumidor.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-[#002D5B]">Prazos</h2>
-          <ul className="list-disc pl-5 space-y-2 text-sm text-muted-foreground">
-            <li><strong>Desistência/Arrependimento:</strong> O prazo é de até 7 (sete) dias corridos a partir do recebimento.</li>
-            <li><strong>Avaria ou Divergência:</strong> Deve ser comunicada no ato da entrega para recusa imediata.</li>
-            <li><strong>Defeito Técnico:</strong> O prazo é de até 30 (trinta) dias para produtos não duráveis e 90 (noventa) para duráveis.</li>
-          </ul>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-[#002D5B]">Estado do Material</h2>
-          <p>
-            Para que a troca ou devolução seja efetuada, o material não deve apresentar sinais de uso, deve estar em sua embalagem original 
-            (se houver), acompanhado de nota fiscal e todos os acessórios. No caso de materiais como cimento e argamassas, os sacos não podem estar rompidos ou úmidos.
-          </p>
-        </section>
-
-        <section className="space-y-4">
-          <h2 className="text-xl font-bold text-[#002D5B]">Como solicitar?</h2>
-          <p>
-            Entre em contato através do nosso e-mail <strong>{SITE.email}</strong> ou pelo WhatsApp <strong>{SITE.phoneDisplay}</strong> 
-            informando o número do pedido e o motivo da solicitação. Nossa equipe retornará com as instruções de coleta ou troca em até 48 horas úteis.
-          </p>
-        </section>
+      <p>
+        Por se tratar de produtos pesados, frágeis ou sensíveis à umidade, a análise de troca ou devolução é
+        feita caso a caso, respeitando o Código de Defesa do Consumidor e acordos comerciais B2B.
+      </p>
+      <h2 className="font-heading text-lg font-bold text-foreground pt-4">No recebimento</h2>
+      <p>
+        Conferir embalagens, quantidades e nota fiscal na entrega. Recusar produtos com avaria aparente e
+        registrar com foto, quando possível.
+      </p>
+      <h2 className="font-heading text-lg font-bold text-foreground pt-4">Solicitação</h2>
+      <p>
+        Entre em contato em até 48 horas (consumidor) ou conforme contrato (B2B), informando número do pedido e
+        motivo. O comercial orientará sobre coleta, crédito ou substituição.
+      </p>
+      <h2 className="font-heading text-lg font-bold text-foreground pt-4">Produtos especiais</h2>
+      <p>
+        Itens cortados sob medida, pedidos especiais ou fora da embalagem original podem não ser elegíveis à
+        devolução, salvo defeito de fabricação comprovado.
+      </p>
+      <div className="not-prose pt-4">
+        <WhatsAppCta
+          source="contact_page"
+          page="/trocas-e-devolucoes"
+          text="Olá! Preciso falar sobre troca ou devolução."
+          label="Abrir chamado no WhatsApp"
+        />
       </div>
     </InstitutionalLayout>
   )

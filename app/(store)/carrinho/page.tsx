@@ -8,7 +8,6 @@ import { createClient } from "@/lib/supabase/client"
 import { saveLocalOrder, generateOrderCode } from "@/lib/local-orders"
 import { waLink } from "@/lib/site-config"
 import { trackWhatsAppClick } from "@/lib/track-whatsapp"
-import { getWhatsAppRotationLink } from "@/lib/whatsapp-rotation"
 
 type CartItem = {
   id: string
@@ -64,9 +63,7 @@ export default function CartPage() {
     })
     const msg = `Olá! Quero finalizar o pedido *${code}*:\n\n${summary}\n\n*Total:* R$ ${total.toFixed(2)}`
     trackWhatsAppClick("checkout_finalize", "/carrinho")
-    
-    const link = await getWhatsAppRotationLink(msg)
-    window.open(link, "_blank", "noopener,noreferrer")
+    window.open(waLink(msg), "_blank", "noopener,noreferrer")
   }
 
   if (cart.length === 0) {
@@ -107,62 +104,33 @@ export default function CartPage() {
           {cart.map((item) => (
             <div
               key={item.id}
-              className="group relative grid grid-cols-[80px_1fr] gap-4 rounded-2xl border border-border/50 bg-card p-4 shadow-app sm:flex sm:items-center sm:gap-6 sm:rounded-3xl"
+              className="flex items-center gap-3 rounded-2xl border border-border/50 bg-card p-3 shadow-app sm:gap-4 sm:rounded-3xl sm:p-4"
             >
-              <div className="relative h-20 w-20 overflow-hidden rounded-xl bg-slate-50 sm:h-24 sm:w-24">
-                {item.image_url ? (
-                  <Image src={item.image_url} alt={item.name} fill className="object-cover" />
-                ) : (
-                  <div className="flex h-full w-full items-center justify-center">
-                    <Package className="h-8 w-8 text-slate-200" />
-                  </div>
-                )}
-              </div>
-
-              <div className="flex flex-col justify-between py-1 sm:flex-row sm:items-center sm:flex-1 sm:gap-6">
-                <div className="min-w-0 flex-1 space-y-1">
-                  <h3 className="text-sm font-bold text-slate-800 line-clamp-1 sm:text-base sm:line-clamp-2">
-                    {item.name}
-                  </h3>
-                  <p className="text-xs font-medium text-slate-400 sm:text-sm">
-                    R$ {Number(item.price).toFixed(2).replace(".", ",")} / {item.unit}
-                  </p>
+              {item.image_url ? (
+                <Image src={item.image_url} alt={item.name} width={80} height={80} className="h-16 w-16 shrink-0 rounded-2xl object-cover sm:h-20 sm:w-20" />
+              ) : (
+                <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-muted sm:h-20 sm:w-20">
+                  <Package className="h-8 w-8 text-muted-foreground" />
                 </div>
-
-                <div className="mt-4 flex items-center justify-between gap-4 sm:mt-0 sm:justify-end">
-                  <div className="flex items-center rounded-full border border-slate-100 bg-slate-50/50 p-1">
-                    <button 
-                      type="button" 
-                      onClick={() => updateQty(item.id, -1)} 
-                      className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white hover:shadow-sm transition-all"
-                    >
-                      <Minus className="h-3 w-3" />
-                    </button>
-                    <span className="min-w-[2.5rem] text-center text-sm font-bold text-[#002D5B]">
-                      {item.qty}
-                    </span>
-                    <button 
-                      type="button" 
-                      onClick={() => updateQty(item.id, 1)} 
-                      className="flex h-8 w-8 items-center justify-center rounded-full hover:bg-white hover:shadow-sm transition-all"
-                    >
-                      <Plus className="h-3 w-3" />
-                    </button>
-                  </div>
-
-                  <div className="text-right min-w-[100px]">
-                    <p className="text-xs font-medium text-slate-400 sm:hidden">Total</p>
-                    <p className="font-bold text-[#002D5B] sm:text-lg">
-                      R$ {(item.price * item.qty).toFixed(2).replace(".", ",")}
-                    </p>
-                  </div>
-                </div>
+              )}
+              <div className="flex-1 min-w-0">
+                <h3 className="font-medium text-card-foreground text-sm line-clamp-2">{item.name}</h3>
+                <p className="text-primary font-bold mt-1">R$ {Number(item.price).toFixed(2)} <span className="text-xs text-muted-foreground font-normal">/{item.unit}</span></p>
               </div>
-
+              <div className="flex shrink-0 items-center overflow-hidden rounded-full border border-border/80">
+                <button type="button" onClick={() => updateQty(item.id, -1)} className="p-2.5 text-foreground transition hover:bg-muted">
+                  <Minus className="h-3.5 w-3.5" />
+                </button>
+                <span className="min-w-[2rem] px-2 text-center text-sm font-semibold text-foreground">{item.qty}</span>
+                <button type="button" onClick={() => updateQty(item.id, 1)} className="p-2.5 text-foreground transition hover:bg-muted">
+                  <Plus className="h-3.5 w-3.5" />
+                </button>
+              </div>
+              <p className="font-bold text-card-foreground text-sm shrink-0 w-24 text-right">R$ {(item.price * item.qty).toFixed(2)}</p>
               <button
                 type="button"
                 onClick={() => removeItem(item.id)}
-                className="absolute -right-2 -top-2 h-8 w-8 flex items-center justify-center rounded-full bg-white border border-slate-100 text-slate-400 shadow-sm opacity-0 group-hover:opacity-100 sm:static sm:h-10 sm:w-10 sm:border-0 sm:bg-transparent sm:shadow-none sm:opacity-100 transition-all hover:text-red-500"
+                className="shrink-0 rounded-full p-2.5 text-muted-foreground transition hover:bg-destructive/10 hover:text-destructive"
               >
                 <Trash2 className="h-4 w-4" />
               </button>

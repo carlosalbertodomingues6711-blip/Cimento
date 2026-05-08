@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ShoppingCart, Package, MessageCircle, Sparkles, Tag } from "lucide-react"
+import { ShoppingCart, Package, MessageCircle } from "lucide-react"
 import { toast } from "sonner"
 import { waLink } from "@/lib/site-config"
 import { trackWhatsAppClick } from "@/lib/track-whatsapp"
@@ -77,21 +77,15 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
       {/* Premium Floating Badges */}
-      <div className="pointer-events-none absolute left-0 top-3 z-10 flex flex-col gap-1.5">
+      <div className="pointer-events-none absolute left-0 top-6 z-10 flex flex-col gap-2">
         {product.is_new && (
-          <div className="relative flex items-center overflow-hidden bg-gradient-to-r from-emerald-500 to-emerald-600 text-white pl-3 pr-4 py-[5px] rounded-r-full shadow-[2px_4px_16px_rgba(16,185,129,0.45)] border-y border-r border-emerald-300/20">
-            {/* shimmer */}
-            <span className="pointer-events-none absolute inset-0 translate-x-[-110%] animate-[badge-shimmer_2.8s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg]" />
-            <Sparkles className="relative z-10 w-[11px] h-[11px] mr-1.5 text-emerald-100" />
-            <span className="relative z-10 text-[10px] font-extrabold uppercase tracking-[0.14em] drop-shadow-sm">Lançamento</span>
+          <div className="flex items-center bg-emerald-600 text-white pl-4 pr-3 py-1.5 rounded-r-xl shadow-lg shadow-emerald-900/10 border-l-4 border-emerald-400">
+            <span className="text-[10px] font-black uppercase tracking-[0.1em]">Lançamento</span>
           </div>
         )}
         {discount > 0 && (
-          <div className="relative flex items-center overflow-hidden bg-gradient-to-r from-[#F47920] to-[#d95f0a] text-white pl-3 pr-4 py-[5px] rounded-r-full shadow-[2px_4px_16px_rgba(244,121,32,0.5)] border-y border-r border-white/15">
-            {/* shimmer */}
-            <span className="pointer-events-none absolute inset-0 translate-x-[-110%] animate-[badge-shimmer_2.4s_ease-in-out_infinite_0.6s] bg-gradient-to-r from-transparent via-white/25 to-transparent skew-x-[-20deg]" />
-            <Tag className="relative z-10 w-[11px] h-[11px] mr-1.5 text-orange-100" />
-            <span className="relative z-10 text-[10px] font-extrabold uppercase tracking-[0.1em] drop-shadow-sm">-{discount}%&nbsp;OFF</span>
+          <div className="flex items-center bg-gradient-to-r from-[#F47920] to-[#e06b10] text-white pl-4 pr-3 py-1.5 rounded-r-xl shadow-lg shadow-orange-900/10 border-l-4 border-orange-300">
+            <span className="text-[11px] font-black uppercase tracking-tight">-{discount}% OFF</span>
           </div>
         )}
       </div>
@@ -116,21 +110,16 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
-        <div className="mb-4 flex items-center justify-between">
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded-md bg-emerald-50 text-emerald-700 border border-emerald-100/50 text-[9px] font-bold uppercase tracking-wider">
-                <div className="relative flex h-1.5 w-1.5">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-                </div>
+        <div className="mb-3 flex items-center justify-between">
+            <div className="flex items-center gap-1.5 text-[9px] font-bold text-emerald-600 uppercase tracking-widest">
+                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
                 Disponível
             </div>
-            <span className="text-[9px] font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded-md border border-slate-100 uppercase tracking-widest">
-                ID: {product.id.slice(0, 6)}
-            </span>
+            <span className="text-[9px] font-medium text-slate-400 uppercase tracking-widest">Cód: {product.id.slice(0, 6)}</span>
         </div>
 
         <Link href={`/produto/${product.slug}`} className="mb-5">
-          <h3 className="line-clamp-2 text-[14px] font-semibold leading-tight text-slate-800 transition-colors group-hover:text-[#F47920]">
+          <h3 className="line-clamp-2 text-[14px] font-bold leading-tight text-slate-800 transition-colors group-hover:text-[#F47920]">
             {product.name}
           </h3>
         </Link>
@@ -143,11 +132,11 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
               </p>
             )}
             <div className="flex items-baseline gap-1.5">
-              <p className="text-2xl font-bold text-[#002D5B] tabular-nums tracking-tighter">
-                <span className="text-xs font-semibold mr-1 opacity-60">R$</span>
+              <p className="text-2xl font-black text-[#002D5B] tabular-nums tracking-tighter">
+                <span className="text-xs font-bold mr-1 opacity-60">R$</span>
                 {Number(product.price).toFixed(2).replace(".", ",")}
               </p>
-              <span className="text-[11px] font-medium text-slate-400 uppercase tracking-widest">/{product.unit}</span>
+              <span className="text-[11px] font-bold text-slate-400 uppercase tracking-widest">/{product.unit}</span>
             </div>
           </div>
 
@@ -155,7 +144,7 @@ export default function ProductCard({ product }: { product: ProductCardProduct }
             <button
               type="button"
               onClick={() => addToCart(product)}
-              className="group/buy relative flex-1 flex h-12 items-center justify-center rounded-xl bg-gradient-to-r from-[#002D5B] to-[#004a94] text-white text-[10px] font-bold uppercase tracking-[0.15em] shadow-lg shadow-blue-900/10 transition-all duration-300 hover:shadow-blue-900/20 hover:-translate-y-0.5 active:scale-95 overflow-hidden"
+              className="group/buy relative flex-1 flex h-12 items-center justify-center rounded-xl bg-gradient-to-r from-[#002D5B] to-[#004a94] text-white text-[10px] font-black uppercase tracking-[0.15em] shadow-lg shadow-blue-900/10 transition-all duration-300 hover:shadow-blue-900/20 hover:-translate-y-0.5 active:scale-95 overflow-hidden"
             >
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover/buy:opacity-100 transition-opacity" />
               <div className="absolute inset-0 translate-x-[-100%] group-hover/buy:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg]" />
